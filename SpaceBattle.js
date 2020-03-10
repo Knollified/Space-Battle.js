@@ -1,4 +1,10 @@
+//Used npm install prompts in order to create this game using prompts in the terminal.
 const prompts = require('prompts');
+
+//These are the ships Both the users ship and the alien ships.
+//Hull is the ships health
+//FirePower is how much damage the ship does.
+//Accuracy is to see if a ship hits or not. Ships hit when accuracy is <= .8 && >= .6. If it goes over .8 it is a miss. if it is less than .6 it is also a miss.
 let userShip = {
     hull: 20,
     firePower: 5,
@@ -34,11 +40,21 @@ let fighterShip6 = {
     firePower: Math.floor(Math.random() * (4 - 2) + 2.5),
     accuracy: Math.random()
 }
+
+//When a ship dies they go into this array and all dead ships are displayed after every round is complete.
 let deadShips = [];
-let game = true;
+
+//This is the function that ends the game and terminates the process without closing he terminal.
+let endGame = () =>{
+    console.clear();
+    console.log('Game Over The earth has been destroyed!');
+    process.exit(1);
+}
+
+//This is the game itself
 let startGame = () =>{
-if (game == true){
-(async () => {
+//First prompt to start the game after the startGame function is called
+    (async () => {
   const response = await prompts({
     type: 'text',
     name: 'game',
@@ -47,6 +63,7 @@ if (game == true){
   });
   console.clear();
   console.log('Game Starting');
+//First Attack Prompt to attack the alien ship 1
   (async () => {
     const response = await prompts({
       type: 'text',
@@ -54,6 +71,8 @@ if (game == true){
       message: 'Attack?',
       validate: attack => attack == 'attack'
     });
+//Below is the basic checks and fighting mechanics between the user and the alien ship. This code is used for every ship.
+//When attacking the game logs the action as well as all the events that take place in a round. After the round is over the next round will start.
     console.log('Attacking Ship 1');
 
     for(fighterShip1.hull; fighterShip1.hull > 0; fighterShip1.hull){
@@ -80,6 +99,7 @@ if (game == true){
             endGame();
         }
 }
+//Attack  or retreat Prompt to attack the alien ship 2 or force a game over
 (async () => {
     const response = await prompts({
       type: 'text',
@@ -117,6 +137,7 @@ if (game == true){
             endGame();
         }
     }
+//Attack  or retreat Prompt to attack the alien ship 3 or force a game over
 (async () => {
     const response = await prompts({
         type: 'text',
@@ -154,6 +175,7 @@ if (game == true){
             endGame();
         }
     }
+//Attack  or retreat Prompt to attack the alien ship 4 or force a game over
 (async () => {
     const response = await prompts({
         type: 'text',
@@ -191,6 +213,7 @@ if (game == true){
             endGame();
         }
     }
+//Attack  or retreat Prompt to attack the alien ship 5 or force a game over
 (async () => {
     const response = await prompts({
         type: 'text',
@@ -228,6 +251,7 @@ if (game == true){
             endGame();
         }
     }
+//Attack  or retreat Prompt to attack the alien ship 6 or force a game over
 (async () => {
     const response = await prompts({
         type: 'text',
@@ -272,13 +296,7 @@ if (game == true){
   })();
   })();
   })();
-})()}else{
-        endGame();
-    };
+})()
 }
-let endGame = () =>{
-    console.clear();
-    console.log('Game Over!');
-    process.exit(1);
-}
+//game starts here after everything has been defined
 startGame();

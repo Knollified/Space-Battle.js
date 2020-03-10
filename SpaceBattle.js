@@ -59,7 +59,7 @@ let startGame = () =>{
     type: 'text',
     name: 'game',
     message: 'Start Game?',
-    validate: game => game == 'start'
+    validate: game => game === 'start',
   });
   console.clear();
   console.log('Game Starting');
@@ -107,9 +107,6 @@ let startGame = () =>{
       message: 'Attack or Retreat?',
       validate: attack => attack === 'retreat' ?  endGame(): true
     });
-    if(response === 'retreat'){
-        endGame();
-    }
     console.log('Attacking Ship 2');
 
     for(fighterShip2.hull; fighterShip2.hull > 0; fighterShip2.hull){
@@ -145,9 +142,6 @@ let startGame = () =>{
         message: 'Attack or Retreat?',
         validate: attack => attack === 'retreat' ?  endGame(): true
     });
-    if(response === 'retreat'){
-       endGame();
-    }
     console.log('Attacking Ship 3');
 
     for(fighterShip3.hull; fighterShip3.hull > 0; fighterShip3.hull){
@@ -221,9 +215,6 @@ let startGame = () =>{
         message: 'Attack or Retreat?',
         validate: attack => attack === 'retreat' ?  endGame(): true
     });
-    if(response === 'retreat'){
-       endGame();
-    }
     console.log('Attacking Ship 5');
 
     for(fighterShip5.hull; fighterShip5.hull > 0; fighterShip5.hull){
@@ -259,9 +250,6 @@ let startGame = () =>{
       message: 'Attack or Retreat?',
       validate: attack => attack === 'retreat' ?  endGame(): true
     });
-    if(response === 'retreat'){
-       endGame();
-    }
     console.log('Attacking Ship 6');
 
     for(fighterShip6.hull; fighterShip6.hull > 0; fighterShip6.hull){
